@@ -16,17 +16,17 @@ function validateSignupForm(payload) {
   let isFormValid = true;
   let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email) || !(new RegExp('^([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.in$','g').test(payload.email))) {
+  if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email) || !(new RegExp('^(\S+)@(\S+)\.in$','g').test(payload.email))) {
     isFormValid = false;
     errors.email = 'Please provide a correct email address.';
   }
 
-  if (!payload || typeof payload.password !== 'string' || !(new RegExp('((?=.*[A-Z]{2})(?=.*[@#$%]{2}).{4,8})', 'g').test(payload.password))) {
+  if (!payload || typeof payload.password !== 'string' || !(new RegExp('((?=.*[A-Z]{2})(?=.*[\W\D\S]{2}).{4,8})$', 'g').test(payload.password))) {
     isFormValid = false;
     errors.password = 'Password must be in correct format.';
   }
 
-  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0 || !(new RegExp('^flexiple_[a-z_]+', 'g').test(payload.name))) {
+  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0 || !(new RegExp('^flexiple_[a-z_]+$', 'g').test(payload.name))) {
     isFormValid = false;
     errors.name = 'Please provide your name in correct format.';
   }
