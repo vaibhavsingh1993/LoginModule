@@ -6,8 +6,9 @@ import Auth from '../modules/Auth';
 const Base = ({ children }) => (
   <div>
     <div className="top-bar">
-      <div className="top-bar-left">
-        <IndexLink to="/">React App</IndexLink>
+      <div className="text-center" >
+        <IndexLink to="/">Flexiple 
+freelancing karega?	</IndexLink>
       </div>
 
       {Auth.isUserAuthenticated() ? (
@@ -15,7 +16,7 @@ const Base = ({ children }) => (
           <Link to="/logout">Log out</Link>
         </div>
       ) : (
-        <div className="top-bar-right">
+        <div className="container">
           <Link to="/login">Log in</Link>
           <Link to="/signup">Sign up</Link>
         </div>

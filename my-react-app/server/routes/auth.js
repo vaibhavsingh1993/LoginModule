@@ -16,19 +16,19 @@ function validateSignupForm(payload) {
   let isFormValid = true;
   let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
+  if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email) || !(new RegExp('^([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.in$','g').test(payload.email))) {
     isFormValid = false;
     errors.email = 'Please provide a correct email address.';
   }
 
-  if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 8) {
+  if (!payload || typeof payload.password !== 'string' || !(new RegExp('((?=.*[A-Z]{2})(?=.*[@#$%]{2}).{4,8})', 'g').test(payload.password))) {
     isFormValid = false;
-    errors.password = 'Password must have at least 8 characters.';
+    errors.password = 'Password must be in correct format.';
   }
 
-  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
+  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0 || !(new RegExp('^flexiple_[a-z_]+', 'g').test(payload.name))) {
     isFormValid = false;
-    errors.name = 'Please provide your name.';
+    errors.name = 'Please provide your name in correct format.';
   }
 
   if (!isFormValid) {
@@ -108,7 +108,7 @@ router.post('/signup', (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      message: 'You have successfully signed up! Now you should be able to log in.'
+      message: 'Welcome to Flexiple.'
     });
   })(req, res, next);
 });
@@ -142,7 +142,7 @@ router.post('/login', (req, res, next) => {
 
     return res.json({
       success: true,
-      message: 'You have successfully logged in!',
+      message: 'Welcome to Flexiple.',
       token,
       user: userData
     });

@@ -16796,11 +16796,11 @@ var Base = function Base(_ref) {
       { className: 'top-bar' },
       _react2.default.createElement(
         'div',
-        { className: 'top-bar-left' },
+        { className: 'text-center' },
         _react2.default.createElement(
           _reactRouter.IndexLink,
           { to: '/' },
-          'React App'
+          'Flexiple freelancing karega? '
         )
       ),
       _Auth2.default.isUserAuthenticated() ? _react2.default.createElement(
@@ -16813,7 +16813,7 @@ var Base = function Base(_ref) {
         )
       ) : _react2.default.createElement(
         'div',
-        { className: 'top-bar-right' },
+        { className: 'container' },
         _react2.default.createElement(
           _reactRouter.Link,
           { to: '/login' },
@@ -16861,8 +16861,7 @@ var Dashboard = function Dashboard(_ref) {
     _Card.Card,
     { className: 'container' },
     _react2.default.createElement(_Card.CardTitle, {
-      title: 'Dashboard',
-      subtitle: 'You should get access to this page only after authentication.'
+      title: 'Welcome to Flexiple.'
     }),
     secretData && _react2.default.createElement(
       _Card.CardText,
@@ -16901,7 +16900,7 @@ var HomePage = function HomePage() {
   return _react2.default.createElement(
     _Card.Card,
     { className: 'container' },
-    _react2.default.createElement(_Card.CardTitle, { title: 'React Application', subtitle: 'This is the home page.' })
+    _react2.default.createElement(_Card.CardTitle, { title: 'Hello stranger', subtitle: 'Would you like to log in, or sign up?' })
   );
 };
 
