@@ -31,6 +31,9 @@ const apiRoutes = require('./server/routes/api');
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
+function changeToken() {
+	alert("token changed");
+};
 
 // start the server
 app.listen(8080, () => {

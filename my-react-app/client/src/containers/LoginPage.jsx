@@ -31,6 +31,7 @@ class LoginPage extends React.Component {
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
+    this.changeToken = this.changeToken.bind(this);
   }
 
   /**
@@ -108,10 +109,28 @@ class LoginPage extends React.Component {
         errors={this.state.errors}
         successMessage={this.state.successMessage}
         user={this.state.user}
+	changeToken={this.changeToken}
       />
     );
   }
 
+}
+
+changeToken(event) {
+ event.preventDefault(); 
+
+ const data = null;
+ const xhr = new XMLHttpRequest();
+ xhr.withCredentials = true;
+ xhr.addEventListener( 'readystatechange', () => {
+  if (this.readyState === 4) {
+   console.log(this.responseText);
+  }
+ }
+ xhr.open('POST', "https://blr00bck.idc.oracle.com/iwc/svc/iwcp/login.iwc?username=demo12&password=demo12");
+xhr.setRequestHeader('cache-control', 'no-cache');
+
+xhr.send(data);
 }
 
 LoginPage.contextTypes = {
